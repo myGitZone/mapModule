@@ -6,7 +6,7 @@ npm install map-module --save
 
 在mian.js中
 
-import 'map-module/dist/static/css/app.css';
+import 'map-module/lib /static/css/app.css';
 
 import mapModule boncMap from 'map-module';
 
