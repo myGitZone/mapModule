@@ -1,0 +1,16 @@
+.esriMeasurementResultValue, .esriMeasurementButtonContainer {
+  text-align: center;
+}
+
+.dijitButtonText {
+  color: #fff;
+}
+
+.esriMeasurement .esriMeasurementResultTable {
+  margin: 0 auto;
+  width: 90% !important;
+}
+
+.esriMeasurementResultLabel {
+  height: 20px;
+}
