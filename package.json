@@ -1,10 +1,9 @@
 {
   "name": "map-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Esri map component for vue2.0",
   "author": "yanchanglu <513894105@qq.com>",
-  "private": true,
-  "main": "dist/static/js/app.js",
+  "main": "lib/static/js/app.js",
   "scripts": {
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
