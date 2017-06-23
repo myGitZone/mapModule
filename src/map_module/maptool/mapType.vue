@@ -1,14 +1,14 @@
 <template>
   <div class="maptype-container">
     <ul>
-      <li class="mapTypeCard" :class="{ active: active==='normal' }" id="normal" @click="changeMapType">
-        <span>矢量</span>
+      <li class="mapTypeCard active" :class="firstType.class" id="normal" @click="changeMapType(0)">
+        <span>{{firstType.name}}</span>
       </li>
-      <li class="mapTypeCard" :class="{ active: active==='earch' }" id="earch" @click="changeMapType">
-        <span>地形</span>
+      <li class="mapTypeCard" :class="secondType.class" id="earch" @click="changeMapType(1)">
+        <span>{{secondType.name}}</span>
       </li>
-      <li class="mapTypeCard" :class="{ active: active==='terrain' }" id="terrain" @click="changeMapType">
-        <span>影像</span>
+      <li class="mapTypeCard" :class="thirdType.class" id="terrain" @click="changeMapType(2)">
+        <span>{{thirdType.name}}</span>
       </li>
     </ul>
   </div>
@@ -19,7 +19,32 @@ export default {
   name: 'MapType',
   data() {
     return {
-      active: 'normal'
+      firstType: {
+        class: 'normal',
+        name: '矢量'
+      },
+      secondType: {
+        class: 'earch',
+        name: '地形'
+      },
+      thirdType: {
+        class: 'terrain',
+        name: '影像'
+      },
+      layers: {
+        '矢量': {
+          baseMapName: '矢量底图',
+          baseLabelName: '矢量标注'
+        },
+        '地形': {
+          baseMapName: '地形底图',
+          baseLabelName: '地形标注'
+        },
+        '影像': {
+          baseMapName: '影像底图',
+          baseLabelName: '影像标注'
+        }
+      }
     };
   },
   props: {
@@ -36,25 +61,32 @@ export default {
     }
   },
   methods: {
-    changeMapType: function (event) {
+    changeMapType: function (index) {
       if (!this.mapConfig.map.getLayer('baseMap')) return;
       let _self = this;
-      let baseMapName;
-      let baseLabelName;
-      switch (event.target.id) {
-        case 'earch':
-          baseMapName = '地形底图';
-          baseLabelName = '地形标注';
+      // 记录当前选中的类型
+      let currentTypeName = null;
+      let tempObj = null;
+      switch (index) {
+        case 0:
+          return;
+        case 1:
+          currentTypeName = this.secondType.name;
+          tempObj = this.firstType;
+          this.firstType = this.secondType;
+          this.secondType = tempObj;
           break;
-        case 'terrain':
-          baseMapName = '影像底图';
-          baseLabelName = '影像标注';
+        case 2:
+          currentTypeName = this.thirdType.name;
+          tempObj = this.firstType;
+          this.firstType = this.thirdType;
+          this.thirdType = tempObj;
           break;
         default:
-          baseMapName = '矢量底图';
-          baseLabelName = '矢量标注';
-          break;
+          return;
       }
+      let { baseMapName, baseLabelName } = this.layers[currentTypeName];
+      debugger;
       this.mapConfig.esriLoader.dojoRequire(['esri/map', 'esri/geometry/Extent', 'tdlib/TianDiTuLayer'], (Map, Extent, TianDiTuLayer) => {
         let baseMapLayer = new TianDiTuLayer(baseMapName, {
           id: 'baseMap'
@@ -108,10 +140,10 @@ export default {
         width: 80px
         span
             display: inline
-      #normal
+      .normal
         background: #999 url(../image/map/maptype/shiliang.png) no-repeat
-      #earch
+      .earch
         background: #999 url(../image/map/maptype/dixing.png) no-repeat
-      #terrain
+      .terrain
         background: #999 url(../image/map/maptype/yingxiang.png) no-repeat
 </style>
