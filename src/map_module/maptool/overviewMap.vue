@@ -95,7 +95,7 @@ export default {
       if (this.$refs.overviewContainer.children.length === 0) {
         let overViewEl = window.document.createElement('div');
         overViewEl.id = this.elId;
-        overViewEl.classList.add = 'overview-box';
+        overViewEl.className = 'overview-box';
         this.$refs.overviewContainer.appendChild(overViewEl);
       }
       this.$nextTick(function () {
