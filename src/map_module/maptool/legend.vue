@@ -180,6 +180,10 @@ export default {
 };
 </script>
 <style lang="scss">
+.legend-box {
+  height: 100%;
+}
+
 .plugin-arrow-legend {
   position: absolute;
   right: 0;
@@ -209,6 +213,7 @@ export default {
   width: 100%;
   height: 100%;
   .legend {
+    height: 100%;
     background: linear-gradient(to bottom, #0a162c, #0a2f4d);
     .esriLegendServiceLabel {
       padding: 5px;
