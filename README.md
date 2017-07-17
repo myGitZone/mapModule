@@ -1,16 +1,15 @@
 **安装**
 
-npm install map-module --save
+npm i esri-map-module --S
 
 **使用**
 
 在mian.js中
 
-import 'map-module/lib /static/css/app.css';
+import EsriMap from 'esri-map-module';
+import 'esri-map-module/lib/static/css/app.css';
 
-import mapModule boncMap from 'map-module';
-
-Vue.use(mapModule);
+Vue.use(EsriMap);
 
 **例：**
 
