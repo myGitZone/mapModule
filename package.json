@@ -1,6 +1,6 @@
 {
-  "name": "map-module",
-  "version": "1.0.2",
+  "name": "esri-map-module",
+  "version": "1.0.1",
   "description": "A Esri map component for vue2.0",
   "author": "yanchanglu <513894105@qq.com>",
   "main": "lib/static/js/app.js",
