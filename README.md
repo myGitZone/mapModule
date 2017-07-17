@@ -7,6 +7,7 @@ npm i esri-map-module --S
 在mian.js中
 
 import EsriMap from 'esri-map-module';
+
 import 'esri-map-module/lib/static/css/app.css';
 
 Vue.use(EsriMap);
